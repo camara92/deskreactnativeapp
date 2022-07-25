@@ -55,7 +55,7 @@ const AuthUser = ({navigation}) => {
       });
   };
   // connexion
-  const SignIn = userEmail => {
+  const SignIn = (userEmail, navigation) => {
     signInWithEmailAndPassword(authentification, email, password)
       .then(userCredential => {
         // Signed in

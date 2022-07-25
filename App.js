@@ -15,6 +15,7 @@ export default function App(){
     <Provider store={store}>
         {/* <Landing /> */}
         <AppNav />
+        {/* <AuthUser /> */}
         {/* <Home /> */}
         
       
