@@ -1,0 +1,19 @@
+-creer le projet 
+- lancer les deux terminaux 
+- dossier redux 
+- installer package redux dans le projet 
+- redux : npm install redux react-redux
+- import de reducers vers store 
+- affichage des donnees screens users 
+
+***********Icons en react ******************
+1.npm i react-native-vector-icons
+2.aller sur partie android dans gradle dans app  : apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+3.importer le package : import { createIconSetFromIcoMoon } from 'react-native-vector-icons/MaterialIcons'; 
+
+*************icons 
+
+https://github.com/oblador/react-native-vector-icons/blob/HEAD/FONTAWESOME5.md
+2.https://www.npmjs.com/package/react-native-vector-icons
+3.tuto : https://www.youtube.com/watch?v=7ZFUCfLizZo
+4.
