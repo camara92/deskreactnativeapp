@@ -53,28 +53,6 @@ const FirestoreData = () => {
     });
   };
 
-  // authentificatin des users via une collectin des data : firestire collection 
-  // const GetDataUser = async () => {
-  //   const UserCollections = collection(db, 'User');
-  //   const UserSnapshot = await getDocs(UserCollections);
-  //   const UserList = UserSnapshot.docs.map(doc => doc.data());
-   
-  //   console.log(UserList);
-    
-  // };
-  // // set User in firestore database : 
-  // const SetUser = async () => {
-  //   //const city = '';
-  //   // const [office_name, setOfficeName] = useState('');
-  //   setDoc(doc(db, 'User', 'user1'), {
-  //     Lastname: userLastname,
-  //     Firstname: userFirstname,
-  //     Email: userEmail,
-  //     Password: userPassword,
-      
-  //   });
-  // };
-
   return (
     <View style={styles.container}>
       <Text style={styles.infoOffice}>
