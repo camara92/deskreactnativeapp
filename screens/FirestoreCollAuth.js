@@ -16,6 +16,7 @@ import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
 
 // import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
 import {doc, setDoc} from 'firebase/firestore/lite';
+import { Auth } from 'firebase/auth';
 
 // On peut également les importer sur l'import du dessus ou inversement :
 const FirestoreCollAuth = () => {
@@ -24,7 +25,6 @@ const FirestoreCollAuth = () => {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState(false);
   const nomradom = Math.random(0, 9);
-
   // authentificatin des users via une collectin des data : firestire collection 
   const GetDataUser = async () => {
     const UserCollections = collection(db, 'User');
@@ -38,7 +38,7 @@ const FirestoreCollAuth = () => {
   const SetDataUser = async () => {
     //const city = '';
     // const [Lastname, setLastname] = useState('');
-    setDoc(doc(db, 'User', 'user1'), {
+    setDoc(doc(db, 'User', 'user 1'), {
       Lastname: Lastname,
       Firstname: Firstname,
       Email: Email,

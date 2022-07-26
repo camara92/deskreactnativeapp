@@ -11,7 +11,7 @@ import {
 import {db} from '../firebase/firebase-config';
 
 import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
-
+import { ReactNativeAsyncStorage } from 'firebase/auth';
 // Notez bien : soit on utilise 'firebase/firestore/lite ou sans lite dans un seul projet : configurer au besoin fichir config de firebase
 
 // import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
@@ -45,7 +45,7 @@ const FirestoreData = () => {
   const SetData = async () => {
     //const city = '';
     // const [office_name, setOfficeName] = useState('');
-    setDoc(doc(db, 'Desk', 'office general'), {
+    setDoc(doc(db, 'Desk', 'Bureau 1'), {
       Name: office_name,
       IsReserved: isReserved,
       ReservedBy: Person,
@@ -122,6 +122,9 @@ const FirestoreData = () => {
         <Text> {Person} </Text>
         <Text> {Until} </Text> */}
         </View>
+        {/* <View style={styles.btnNav}>
+          <Button title="Go back" onPress={() => navigation.goBack()} />
+        </View> */}
       </View>
     </View>
   );
@@ -142,8 +145,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderRadius: 10,
-    marginTop: 5,
+    // borderRadius: 10,
+    // marginTop: 1,
   },
   buttonContainer: {
     width: '100%',

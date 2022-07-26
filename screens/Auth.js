@@ -15,6 +15,7 @@ import {signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
 import {doc, setDoc} from 'firebase/firestore/lite';
 import {db} from '../firebase/firebase-config';
+import { ReactNativeAsyncStorage } from 'firebase/auth';
 
 const FirestoreAuth = ({navigation}) => {
   const [isSignedIn, setisSignedIn] = useState(false);
@@ -33,7 +34,7 @@ const FirestoreAuth = ({navigation}) => {
   };
   // setUser in firestore :
   const SetData = async () => {
-    setDoc(doc(db, 'User', 'user'), {
+    setDoc(doc(db, 'User', 'user2'), {
       email: Email,
       name: Password,
     });
@@ -46,24 +47,30 @@ const FirestoreAuth = ({navigation}) => {
         console.log(userCredential);
       })
       .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        alert(
+          "Veiller vérifier vos saisies d'inscrition. Merci de vous inscrire si ce n'est pas encore fait. 💻",
+        );
         // ..
       });
   };
   // connexion
-  const SignIn = userEmail => {
+  const SignIn =( userEmail) => {
     signInWithEmailAndPassword(authentification, email, password)
       .then(userCredential => {
         // Signed in
         const user = userCredential.user;
         console.log('Bienvenue. Vous êtes sur la page de connexion. ');
         setisSignedIn(true);
+        // hanlePressAfterSign()
+        hanlePressAfterSign(user.email);
+        navigation.navigate('Landing');
         // ...
       })
       .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
         alert(
           "Veiller vérifier vos identifiants de connexion. Merci de vous inscrire si ce n'est pas encore fait. 💻",
         );
@@ -73,11 +80,14 @@ const FirestoreAuth = ({navigation}) => {
     signOut(authentification).then(userCredential => {
       setisSignedIn(false);
       console.log('Vous êtes déconnecté du site. Merci de votre visite. ');
-      hanlePressAfterSign(user.email);
+      
     });
   };
-  const hanlePressAfterSign = userEmail => {
+  const hanlePressAfterSign = (userEmail )=> {
     console.log('signIn');
+    if(email==email && password==password){
+      console.log("Salut Daouda");
+    }
     navigation.navigate('Landing', {email: userEmail});
   };
   return (
@@ -103,13 +113,15 @@ const FirestoreAuth = ({navigation}) => {
           <Button title="S'inscrire" onPress={Register} />
         </View>
         {isSignedIn === true ? (
+          <View style={styles.btnNav}>
           <Button title="Déconnecter" onPress={SignOutUser} />
+          </View>
         ) : (
           <View style={styles.btnNav}>
             <Button
               title="Se connecter"
               onPress={SignIn}
-              onPress={() => navigation.navigate('Landing')}
+              // onPress={() => navigation.navigate('Landing')}
             />
           </View>
         )}
@@ -126,9 +138,9 @@ const FirestoreAuth = ({navigation}) => {
               onPress={() => navigation.navigate('OfficeData')}
             />
           </View>
-        <View style={styles.btnNav}>
+        {/* <View style={styles.btnNav}>
           <Button title="Go back" onPress={() => navigation.goBack()} />
-        </View>
+        </View> */}
       </View>
     </View>
   );

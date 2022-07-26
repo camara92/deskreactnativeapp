@@ -46,12 +46,16 @@ const AuthUser = ({navigation}) => {
         // Signed in
         const user = userCredential.user;
         console.log(userCredential);
+        // if(email =="" && password==""){
+        //   alert('Merci de vous inscrire. ');
+        // }
         
       })
       .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        alert("Veiller vérifier vos identifiants de connexion. Merci de vous inscrire si ce n'est pas encore fait. 💻")
+        console.log(error); 
       });
   };
   // connexion
@@ -62,6 +66,9 @@ const AuthUser = ({navigation}) => {
         const user = userCredential.user;
         console.log('Bienvenue. Vous êtes sur la page de connexion. ');
         setisSignedIn(true);
+        if(email!=email){
+          alert("Désole cette adresse mail n'existe pas. Merci de vous inscrire.")
+        }
         // ...
       })
       .catch(error => {
