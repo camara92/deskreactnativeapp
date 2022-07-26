@@ -71,10 +71,11 @@ function AppNav({navigation}) {
           options={{title: 'Cours'}}
           component={Landing}
           options={{
-            title: 'Catalogue',
+            title: '    Catalogue',
           }}
         />
-        <Stack.Screen name="Cart" options={{title: 'Cart'}} component={Cart} />
+        <Stack.Screen name="Cart" options={{title: '        Cart'}} 
+        component={Cart} />
         <Stack.Screen
           name="Details"
           options={{title: 'Détails'}}
