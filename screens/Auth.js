@@ -15,22 +15,22 @@ import {signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
 import {doc, setDoc} from 'firebase/firestore/lite';
 import {db} from '../firebase/firebase-config';
-import { ReactNativeAsyncStorage } from 'firebase/auth';
+import {ReactNativeAsyncStorage} from 'firebase/auth';
 
 const FirestoreAuth = ({navigation}) => {
   const [isSignedIn, setisSignedIn] = useState(false);
   // text btnNav states
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const nomradom = Math.random(0, 9);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const nomradom = Math.random(0, 9);
 
-    const GetData = async () => {
-      // inscription via une collection firestore des users : 
-      
-      const UserCollection = collection(db, 'User');
-      const UserSnapshot = await getDocs(UserCollection);
-      const UserList = UserSnapshot.docs.map(doc => doc.data());
-      console.log(UserList);
+  const GetData = async () => {
+    // inscription via une collection firestore des users :
+
+    const UserCollection = collection(db, 'User');
+    const UserSnapshot = await getDocs(UserCollection);
+    const UserList = UserSnapshot.docs.map(doc => doc.data());
+    console.log(UserList);
   };
   // setUser in firestore :
   const SetData = async () => {
@@ -50,13 +50,11 @@ const FirestoreAuth = ({navigation}) => {
         // const errorCode = error.code;
         // const errorMessage = error.message;
         alert(
-          "Veiller vérifier vos saisies d'inscrition. Merci de vous inscrire si ce n'est pas encore fait. 💻",
-        );
-        // ..
+          "Veiller vérifier vos saisies d'inscription. Merci de vous inscrire si ce n'est pas encore fait. 💻");
       });
   };
   // connexion
-  const SignIn =( userEmail) => {
+  const SignIn = userEmail => {
     signInWithEmailAndPassword(authentification, email, password)
       .then(userCredential => {
         // Signed in
@@ -80,19 +78,21 @@ const FirestoreAuth = ({navigation}) => {
     signOut(authentification).then(userCredential => {
       setisSignedIn(false);
       console.log('Vous êtes déconnecté du site. Merci de votre visite. ');
-      
     });
   };
-  const hanlePressAfterSign = (userEmail )=> {
+  const hanlePressAfterSign = userEmail => {
     console.log('signIn');
-    if(email==email && password==password){
-      console.log("Salut Daouda");
+    if (email == email && password == password) {
+      console.log('Salut Daouda');
     }
     navigation.navigate('Landing', {email: userEmail});
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.TextWelcome}>Welcome to your app for Office. Please Sign In And Add Office In your plan. </Text>
+      <Text style={styles.TextWelcome}>
+        Welcome to your app for Office. Please Sign In And Add Office In your
+        plan.{' '}
+      </Text>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
@@ -114,7 +114,7 @@ const FirestoreAuth = ({navigation}) => {
         </View>
         {isSignedIn === true ? (
           <View style={styles.btnNav}>
-          <Button title="Déconnecter" onPress={SignOutUser} />
+            <Button title="Déconnecter" onPress={SignOutUser} />
           </View>
         ) : (
           <View style={styles.btnNav}>
@@ -127,17 +127,17 @@ const FirestoreAuth = ({navigation}) => {
         )}
         {/* datastore button  */}
         <View style={styles.btnNavData}>
-            <Button
-              title="SetUser"
-              onPress={SignIn}
-              onPress={() => navigation.navigate('DataUser')}
-            />
-            <Button
-              title="GetData"
-              onPress={SignIn}
-              onPress={() => navigation.navigate('OfficeData')}
-            />
-          </View>
+          <Button
+            title="SetUser"
+            onPress={SignIn}
+            onPress={() => navigation.navigate('DataUser')}
+          />
+          <Button
+            title="GetData"
+            onPress={SignIn}
+            onPress={() => navigation.navigate('OfficeData')}
+          />
+        </View>
         {/* <View style={styles.btnNav}>
           <Button title="Go back" onPress={() => navigation.goBack()} />
         </View> */}
@@ -175,28 +175,25 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
   },
-  TextWelcome:{
-    color: "white", 
-    marginBottom:15, 
-    fontSize:25,
-    textShadowColor:"bold",
+  TextWelcome: {
+    color: 'white',
+    marginBottom: 15,
+    fontSize: 25,
+    textShadowColor: 'bold',
     textShadowOffset: {width: 5, height: 5},
     textShadowRadius: 25,
     textShadowColor: 'blue',
-    textAlign:"center",
-
-  }, 
+    textAlign: 'center',
+  },
   btnNavData: {
     backgroundColor: 'white',
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
-    flexDirection:"row", 
-    width:"100%", 
-    justifyContent:"space-between", 
-
-
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
   },
 });
 
