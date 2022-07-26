@@ -78,11 +78,11 @@ const FirestoreAuth = ({navigation}) => {
   };
   const hanlePressAfterSign = userEmail => {
     console.log('signIn');
-    navigation.navigate('Office', {email: userEmail});
+    navigation.navigate('Landing', {email: userEmail});
   };
   return (
     <View style={styles.container}>
-      <Text>Hello</Text>
+      <Text style={styles.TextWelcome}>Welcome to your app for Office. Please Sign In And Add Office In your plan. </Text>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
@@ -113,6 +113,19 @@ const FirestoreAuth = ({navigation}) => {
             />
           </View>
         )}
+        {/* datastore button  */}
+        <View style={styles.btnNavData}>
+            <Button
+              title="SetUser"
+              onPress={SignIn}
+              onPress={() => navigation.navigate('DataUser')}
+            />
+            <Button
+              title="GetData"
+              onPress={SignIn}
+              onPress={() => navigation.navigate('OfficeData')}
+            />
+          </View>
         <View style={styles.btnNav}>
           <Button title="Go back" onPress={() => navigation.goBack()} />
         </View>
@@ -149,6 +162,29 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '700',
     fontSize: 16,
+  },
+  TextWelcome:{
+    color: "white", 
+    marginBottom:15, 
+    fontSize:25,
+    textShadowColor:"bold",
+    textShadowOffset: {width: 5, height: 5},
+    textShadowRadius: 25,
+    textShadowColor: 'blue',
+    textAlign:"center",
+
+  }, 
+  btnNavData: {
+    backgroundColor: 'white',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginTop: 5,
+    flexDirection:"row", 
+    width:"100%", 
+    justifyContent:"space-between", 
+
+
   },
 });
 

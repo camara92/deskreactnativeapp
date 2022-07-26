@@ -1,7 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import type {Node} from 'react';
 import {
-  SafeAreaView,ScrollView,StatusBar,StyleSheet,Text,useColorScheme,View,Button,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+  Button,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -13,11 +20,13 @@ import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import Reservations from '../screens/Reservations';
 import CustomHeaderIcon from '../components/CustomHeaderIcon';
 import FirestoreAuth from '../screens/Auth';
+import FirestoreCollAuth from '../screens/FirestoreCollAuth';
+import FirestoreData from '../screens/FirestoreData';
+
 const Stack = createNativeStackNavigator();
 
 function AppNav({navigation}) {
   return (
-    
     <NavigationContainer>
       <Stack.Navigator
         // style header
@@ -31,36 +40,22 @@ function AppNav({navigation}) {
           headerTintColor: globalStyles.white,
           // les icones à droit du header
           headerRight: () => (
-           
             <Button
               style={styles.btnheader}
-              
               title="Mes réservations"
               color="red"
-            
               onPress={() => navigation.navigate('Cart')}
             />
-           
-        
           ),
           headerLeft: () => (
-        
             <Button
               style={styles.btnheader}
-              
               title="Historique"
               color="black"
-        
               onPress={() => navigation.navigate('Reservations')}
             />
-            
           ),
-        
-       
-        }
-        
-        )}>
-
+        })}>
         <Stack.Screen
           name="FirestoreAuth"
           options={{title: '    Inscription'}}
@@ -74,8 +69,11 @@ function AppNav({navigation}) {
             title: '    Catalogue',
           }}
         />
-        <Stack.Screen name="Cart" options={{title: '        Cart'}} 
-        component={Cart} />
+        <Stack.Screen
+          name="Cart"
+          options={{title: '        Cart'}}
+          component={Cart}
+        />
         <Stack.Screen
           name="Details"
           options={{title: 'Détails'}}
@@ -89,13 +87,20 @@ function AppNav({navigation}) {
           options={{title: 'Mes réservations'}}
           component={Reservations}
         />
-        
-
-        
+        {/* screen of Firestore Data  */}
+        <Stack.Screen
+          name="OfficeData"
+          options={{title: 'OfficeData'}}
+          component={FirestoreData}
+        />
+        {/* screen of FirestoreAuth UserCollection Data  */}
+        <Stack.Screen
+          name="DataUser"
+          options={{title: 'AuthStore'}}
+          component={FirestoreCollAuth}
+        />
       </Stack.Navigator>
     </NavigationContainer>
-
-    
   );
 }
 
