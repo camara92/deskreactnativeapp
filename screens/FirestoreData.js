@@ -11,21 +11,20 @@ import {
 import {db} from '../firebase/firebase-config';
 
 import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
-import { ProviderId, ReactNativeAsyncStorage } from 'firebase/auth';
+import {ProviderId, ReactNativeAsyncStorage} from 'firebase/auth';
 // Notez bien : soit on utilise 'firebase/firestore/lite ou sans lite dans un seul projet : configurer au besoin fichir config de firebase
 
 // import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
 import {doc, setDoc} from 'firebase/firestore/lite';
-import { parse } from 'react-native-svg';
+import {parse} from 'react-native-svg';
 
 // On peut également les importer sur l'import du dessus ou inversement :
-const FirestoreData = (pop) => {
+const FirestoreData = pop => {
   const [office_name, setOfficeName] = useState('');
   const [Person, setPerson] = useState('');
   const [Until, setUntil] = useState('');
   const [isReserved, setisReserved] = useState(false);
- const nomradom = Math.random(1, 9);
-
+  const nomradom = Math.random(1, 9);
 
   // database on firestore :
   const GetData = async () => {
@@ -35,17 +34,13 @@ const FirestoreData = (pop) => {
     // console.log(daouda);
     const OfficeList = OfficeSnapshot.docs.map(doc => doc.data());
     console.log(OfficeList);
-    console.log("Nom :" +OfficeList[1].Name);
-    console.log("Ce bureau est il réservé ?  :" +OfficeList[1].IsReserved);
-    console.log("Réservé par : "+ OfficeList[1].ReservedBy);
-    console.log("Délai de réservation "+ OfficeList[1].ReservedUntil);
+    console.log('Nom :' + OfficeList[1].Name);
+    console.log('Ce bureau est il réservé ?  :' + OfficeList[1].IsReserved);
+    console.log('Réservé par : ' + OfficeList[1].ReservedBy);
+    console.log('Délai de réservation ' + OfficeList[1].ReservedUntil);
     // console.log(OfficeList.push("Daouda"))
     // console.log(OfficeSnapshot)
     //console.log(officesCollections);
-
-    
-
-    
   };
   //firestore().collection('Users').onSnapshot(onResult, onError);
   const SetData = async () => {
@@ -57,7 +52,6 @@ const FirestoreData = (pop) => {
       ReservedBy: Person,
       ReservedUntil: Until,
     });
-  
   };
 
   return (
@@ -103,8 +97,7 @@ const FirestoreData = (pop) => {
         </View>
         <View style={styles.btnData}>
           <Button style={styles.btn} title="GetData" onPress={GetData} />
-        {/* <Text> {pop.OfficeList[1].Name} </Text> */}
-       
+          {/* <Text> {pop.OfficeList[1].Name} </Text> */}
         </View>
         {/* <View style={styles.btnNav}>
           <Button title="Go back" onPress={() => navigation.goBack()} />
