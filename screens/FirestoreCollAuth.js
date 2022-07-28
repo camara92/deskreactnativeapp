@@ -38,13 +38,14 @@ const FirestoreCollAuth = () => {
   const SetDataUser = async () => {
     //const city = '';
     // const [Lastname, setLastname] = useState('');
-    setDoc(doc(db, 'User', 'user 1'), {
+    setDoc(doc(db, 'User', 'user 5'), {
       Lastname: Lastname,
       Firstname: Firstname,
       Email: Email,
       Password: Password,
       
     });
+    
   };
 
   return (

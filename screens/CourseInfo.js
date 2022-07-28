@@ -41,21 +41,90 @@ const CourseInfo = ({navigation, route}) => {
         <View style={styles.courseDetails}>
           <Text style={styles.courseDescription}>
             Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
           </Text>
-      
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
+          <Text style={styles.courseDescription}>
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+            Description : {SelectedCourse.description}
+          </Text>
         </View>
       </ScrollView>
       <View style={styles.footerContainer}>
         <View style={styles.footerTop}></View>
         <View style={styles.footerBottom}>
-        
           <TouchableOpacity onPress={() => navigation.goBack('Cart')}>
             <View style={styles.btngoBack}>
               <Text style={styles.textRetour}>Retour </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={handleAddToCart}>
+          <TouchableOpacity onPress={handleAddToCart}>
             <View style={styles.btnAddToCart}>
               <Text style={styles.btntextAdd}>Réserver </Text>
             </View>
