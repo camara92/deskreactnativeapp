@@ -65,12 +65,12 @@ function AppNav({navigation}) {
               <Image
               
               style={{
-                width: 50,
-                height: 40,
+                width: 40,
+                height: 35,
                 resizeMode: 'contain',
-              }}
+                borderRadius:25 }}
               source={{
-                uri: 'https://cdn-icons-png.flaticon.com/512/15/15566.png?w=360',
+                uri: 'https://cdn.pixabay.com/photo/2016/10/10/14/46/icon-1728552_640.jpg',
               }}
             />
 
@@ -109,7 +109,7 @@ function AppNav({navigation}) {
           ),
         })}>
             <Stack.Screen
-          name="                    Accueil"
+          name="Accueil"
           options={{
             tabBarLabel: 'Connexion',
             tabBarIcon: ({color}) => (
@@ -153,7 +153,7 @@ function AppNav({navigation}) {
           }}
         /> */}
         <Stack.Screen
-          name="                      Landing"
+          name="Landing"
           options={{title: 'Cours'}}
           component={Landing}
           options={{
@@ -176,7 +176,7 @@ function AppNav({navigation}) {
         />
 
         <Stack.Screen
-          name="                      Cart"
+          name="Cart"
           options={{
             tabBarLabel: 'Historiques',
             tabBarIcon: ({color}) => (
@@ -205,7 +205,7 @@ function AppNav({navigation}) {
           // })}
         /> */}
         <Stack.Screen
-          name="                     Historique"
+          name="Historique"
           // options={{title: 'Mes réservations'}}
           options={{
             tabBarLabel: 'Booking',
@@ -228,7 +228,7 @@ function AppNav({navigation}) {
         />
         {/* screen of Firestore Data  */}
         <Stack.Screen
-          name="                      Firestore"
+          name="Firestore"
           options={{
             tabBarLabel: 'Firestore',
             tabBarIcon: ({color}) => (

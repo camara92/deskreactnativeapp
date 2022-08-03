@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'green',
+    backgroundColor: '#48d1cc',
     // marginTop: 11,
   },
   inputContainer: {
