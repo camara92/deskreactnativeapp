@@ -109,7 +109,7 @@ function AppNav({navigation}) {
           ),
         })}>
             <Stack.Screen
-          name="Accueil"
+          name="                    Accueil"
           options={{
             tabBarLabel: 'Connexion',
             tabBarIcon: ({color}) => (
@@ -153,7 +153,7 @@ function AppNav({navigation}) {
           }}
         /> */}
         <Stack.Screen
-          name="Landing"
+          name="                      Landing"
           options={{title: 'Cours'}}
           component={Landing}
           options={{
@@ -176,7 +176,7 @@ function AppNav({navigation}) {
         />
 
         <Stack.Screen
-          name="Cart"
+          name="                      Cart"
           options={{
             tabBarLabel: 'Historiques',
             tabBarIcon: ({color}) => (
@@ -205,7 +205,7 @@ function AppNav({navigation}) {
           // })}
         /> */}
         <Stack.Screen
-          name="Historique"
+          name="                     Historique"
           // options={{title: 'Mes réservations'}}
           options={{
             tabBarLabel: 'Booking',
@@ -228,7 +228,7 @@ function AppNav({navigation}) {
         />
         {/* screen of Firestore Data  */}
         <Stack.Screen
-          name="Firestore"
+          name="                      Firestore"
           options={{
             tabBarLabel: 'Firestore',
             tabBarIcon: ({color}) => (
