@@ -5,12 +5,17 @@ import {
   ImageBackground,
   Button,
   TouchableOpacity,
+  Dimensions, animated, 
+  StatusBar,
+  
 } from 'react-native';
 import React, {useState} from 'react';
 import FirestoreAuth from '../screens/Auth';
-//import Register from './Authentification/AuthRegister';
-// import BookingCalendar from './Calendar';
+
+
 const Accueil = ({navigation}) => {
+  // mettre en sorte de caroussel :
+
   const [isSignedIn, setisSignedIn] = useState(false);
   return (
     <View style={styles.container}>
@@ -82,6 +87,32 @@ const styles = StyleSheet.create({
     marginTop: 25,
     width: '100%',
     
+  },
+  // pour le carousel 
+  screen: {
+    flex: 1,
+  },
+  item: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    
+  },
+  itemOverlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+  },
+  image: {
+    resizeMode: 'cover',
+  },
+  titleContainer: {
+    position: 'absolute',
+    bottom: 60,
+    zIndex: 1,
+  },
+  title: {
+    fontSize: 24,
+    color: '#fff',
   },
 
 });

@@ -101,7 +101,8 @@ const Cart = (userEmail) => {
           </View>
         </View>
       ) : (
-        <EmptyMsg text="Pas de réservation" />
+        <EmptyMsg text="Pas de réservation à confirmer " />
+        
       )}
     </View>
   );

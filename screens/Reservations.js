@@ -24,7 +24,7 @@ const Reservations = () => {
         )
     }else{
         return (
-            <EmptyMsg text= "Pas d'achats à afficher " />
+            <EmptyMsg text= "Pas de réservations à afficher " />
         )
     }
 }
