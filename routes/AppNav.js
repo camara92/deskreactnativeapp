@@ -108,8 +108,28 @@ function AppNav({navigation}) {
             </TouchableOpacity>
           ),
         })}>
-    
-    <Stack.Screen
+            <Stack.Screen
+          name="Accueil"
+          options={{
+            tabBarLabel: 'Connexion',
+            tabBarIcon: ({color}) => (
+              // <MaterialCommunityIcons name="home" color={color} size={35} />
+              // <Icon name="home" size={30} color="blue" />
+              <Image
+                style={{
+                  width: 70,
+                  height: 22,
+                  resizeMode: 'contain',
+                }}
+                source={{
+                  uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6jIae1-duuKTTi1TQyvaNw1UxHtvI7An8gQ&usqp=CAU',
+                }}
+              />
+            ),
+          }}
+          component={FirestoreAuth}
+        />
+    {/* <Stack.Screen
           name="                   Accueil"
           
           component={Accueil}
@@ -131,7 +151,7 @@ function AppNav({navigation}) {
               />
             ),
           }}
-        />
+        /> */}
         <Stack.Screen
           name="Landing"
           options={{title: 'Cours'}}
@@ -154,27 +174,7 @@ function AppNav({navigation}) {
             ),
           }}
         />
-        <Stack.Screen
-          name="FirestoreAuth"
-          options={{
-            tabBarLabel: 'Connexion',
-            tabBarIcon: ({color}) => (
-              // <MaterialCommunityIcons name="home" color={color} size={35} />
-              // <Icon name="home" size={30} color="blue" />
-              <Image
-                style={{
-                  width: 70,
-                  height: 22,
-                  resizeMode: 'contain',
-                }}
-                source={{
-                  uri: 'https://cdn-icons-png.flaticon.com/512/295/295128.png',
-                }}
-              />
-            ),
-          }}
-          component={FirestoreAuth}
-        />
+
         <Stack.Screen
           name="Cart"
           options={{
