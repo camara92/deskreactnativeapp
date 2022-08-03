@@ -11,10 +11,10 @@ import {addPayment} from '../redux/reducers/actionReservation';
 import FirestoreAuth from './Auth';
 import {db} from '../firebase/firebase-config';
 import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
-import {ReactNativeAsyncStorage} from 'firebase/auth';
+import {ReactNativeAsyncStorage, signInWithEmailAndPassword} from 'firebase/auth';
 import {doc, setDoc} from 'firebase/firestore/lite';
 
-const Cart = () => {
+const Cart = (userEmail) => {
   // usedispatch de redux
   const dispatch = useDispatch();
   const cartCourses = useSelector(state => state.cart.cartCourses);
@@ -26,21 +26,45 @@ const Cart = () => {
   const [ReservedUntil, setUntil] = useState('9h00');
   const [Firstname, setFirstname] = useState('Daouda');
   const [isReserved, setisReserved] = useState('Yes');
+  const [email, setEmail] = useState(email);
 
   const SetData = async () => {
-    setDoc(doc(db, 'Reservations', 'Réservation'), {
+    setDoc(doc(db, 'Desk', 'Réservation 2'), {
       Name: office_name,
       Firstname: Firstname,
       ReservedBy: Lastname,
       ReservedUntil: ReservedUntil,
-      Email: setEmail(),
+      Email: user.email,
       IsReserved: isReserved,
     });
   };
+  // création de la réservation en collection firestore : 
+  const Create = (Name, IsReserved,ReservedBy, ReservedUntil) => {
+    
+    // creat new doc in firestore
+    const myDoc = doc(db, 'Desk', 'Example 5');
+    const docData = {
+      Name: 'CAMARA Soouleymane Daouda',
+      IsReserved: 'yes',
+      ReservedBy: "CAMARA Daouda Dev",
+      ReservedUntil:"9h00-10h00", 
+      Email: user.email
+    };
+    setDoc(myDoc, docData)
+      .then(() => {
+        alert('success');
+      })
+      .catch(error => {
+        alert(error.message);
+
+      });
+  };
+
   const handlepayment = async (cartCourses, total) => {
     dispatch(addPayment(cartCourses, total));
-
-    alert('payement effectué');
+  
+  
+    alert('Réservation effectué');
   };
   //console.log(cartCourses);
   //console.log(total);
@@ -61,17 +85,19 @@ const Cart = () => {
             )}
           />
           <View style={styles.totalContainer}>
-            <TouchableOpacity onPress={() => handlepayment(cartCourses, total)}>
+            <TouchableOpacity onPress={() => handlepayment(cartCourses, total)}
+            
+            >
               <View style={styles.btnAddPaymentText}>
                 <Text style={styles.btnAddPayment}>Réserver</Text>
               </View>
             </TouchableOpacity>
             {/* collection comme historique de réservation : */}
-            <TouchableOpacity onPress={() => SetData()}>
+            {/* <TouchableOpacity onPress={()=>message()}>
               <View style={styles.btnAddPaymentText}>
                 <Text style={styles.btnAddPayment}>Créer une collection</Text>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
       ) : (

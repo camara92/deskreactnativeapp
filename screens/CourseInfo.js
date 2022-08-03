@@ -38,7 +38,12 @@ const CourseInfo = ({navigation, route}) => {
           style={styles.courseImage}
           source={{uri: SelectedCourse.image}}
         />
-        <View style={styles.courseDetails}>
+         <View style={styles.courseDetails}>
+         <Text style={styles.courseDescription}>
+         {SelectedCourse.title}
+         </Text>
+         </View>
+        {/* <View style={styles.courseDetails}>
           <Text style={styles.courseDescription}>
             Description : {SelectedCourse.description}
             Description : {SelectedCourse.description}
@@ -114,7 +119,7 @@ const CourseInfo = ({navigation, route}) => {
             Description : {SelectedCourse.description}
             Description : {SelectedCourse.description}
           </Text>
-        </View>
+        </View> */}
       </ScrollView>
       <View style={styles.footerContainer}>
         <View style={styles.footerTop}></View>

@@ -4,8 +4,7 @@ import { REMOVE_COURSE_CART } from "../constants";
 import { ADD_PAYMENT } from "../constants";
 
 const initialState = {
-    // un array qui va contenir les cours existants 
-    //id, price et le titre 
+    // un array qui va contenir les cours existants  
     //fichier dans data 
     cartCourses : [], 
     total: 0
@@ -16,16 +15,15 @@ const reducerCart = (state = initialState, action )=>{
     switch(action.type){
         case ADD_TO_CART: 
         const course = action.course; 
-        const idCourse = course.id; 
-        const price =course.price; 
+        const idCourse = course.id;  
         const title= course.title; 
 
         // instanciation de la classe : 
-        const newCourse = new PaieCourse(idCourse, price, title); 
+        const newCourse = new PaieCourse(idCourse,title,  title); 
         return {
             ...state, 
             cartCourses: state.cartCourses.concat(newCourse), 
-            total: state.total+price
+             total: state.total+title
 
         }
         // case pour enlever le cours 
@@ -35,10 +33,6 @@ const reducerCart = (state = initialState, action )=>{
             const newCartCoursesArray = [...state.cartCourses];
             // element qui se trouve dans le array et le retirer 
             newCartCoursesArray.splice(indexResult, 1);
-            // on utilise l'index pour acceder à la propriété price 
-            const coursePrice = state.cartCourses[indexResult].price; 
-            // puis le passser pour faire la soustraction au totale 
-
             return {
                 ...state, 
                 cartCourses: newCartCoursesArray,

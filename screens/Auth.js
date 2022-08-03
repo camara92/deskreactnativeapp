@@ -7,38 +7,24 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
+  Image,
 } from 'react-native';
-import {authentification} from '../firebase/firebase-config';
+import { authentification } from '../firebase/firebase-config';
 
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import {signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
 import {doc, setDoc} from 'firebase/firestore/lite';
 import {db} from '../firebase/firebase-config';
-import {ReactNativeAsyncStorage} from 'firebase/auth';
+ import {ReactNativeAsyncStorage} from 'firebase/auth';
 
-const FirestoreAuth = ({navigation}) => {
+const AuthScreen = ({navigation, props}) => {
   const [isSignedIn, setisSignedIn] = useState(false);
   // text btnNav states
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const nomradom = Math.random(0, 9);
 
-  const GetData = async () => {
-    // inscription via une collection firestore des users :
-
-    const UserCollection = collection(db, 'User');
-    const UserSnapshot = await getDocs(UserCollection);
-    const UserList = UserSnapshot.docs.map(doc => doc.data());
-    console.log(UserList);
-  };
-  // setUser in firestore :
-  const SetData = async () => {
-    setDoc(doc(db, 'User', 'user2'), {
-      email: Email,
-      name: Password,
-    });
-  };
   const Register = ({navigation}) => {
     createUserWithEmailAndPassword(authentification, email, password)
       .then(userCredential => {
@@ -50,7 +36,8 @@ const FirestoreAuth = ({navigation}) => {
         // const errorCode = error.code;
         // const errorMessage = error.message;
         alert(
-          "Veiller vérifier vos saisies d'inscription. Merci de vous inscrire si ce n'est pas encore fait. 💻");
+          "Veiller vérifier vos saisies d'inscription. Merci de vous inscrire si ce n'est pas encore fait. 💻",
+        );
       });
   };
   // connexion
@@ -59,10 +46,13 @@ const FirestoreAuth = ({navigation}) => {
       .then(userCredential => {
         // Signed in
         const user = userCredential.user;
+        console.log(user);
         console.log('Bienvenue. Vous êtes sur la page de connexion. ');
         setisSignedIn(true);
         // hanlePressAfterSign()
         hanlePressAfterSign(user.email);
+        // une fois connecté on fait une redirectin vers les bureaux
+
         navigation.navigate('Landing');
         // ...
       })
@@ -89,10 +79,14 @@ const FirestoreAuth = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.TextWelcome}>
-        Welcome to your app for Office. Please Sign In And Add Office In your
-        plan.{' '}
-      </Text>
+      <Image
+        source={{
+          uri: 'https://cdn-icons-png.flaticon.com/512/295/295128.png',
+          cache: 'only-if-cached',
+        }}
+        style={{width: 150, height: 150, borderRadius:100}}
+      />
+      <Text style={styles.TextWelcome}>Welcome</Text>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
@@ -108,16 +102,16 @@ const FirestoreAuth = ({navigation}) => {
           style={styles.btnNav}
         />
       </View>
-      <View style={styles.inputContainer}>
-        <View style={styles.btnNav}>
+      <View style={styles.AuthContainer}>
+        <View style={styles.btnAuth}>
           <Button title="S'inscrire" onPress={Register} />
         </View>
         {isSignedIn === true ? (
-          <View style={styles.btnNav}>
+          <View style={styles.btnAuth}>
             <Button title="Déconnecter" onPress={SignOutUser} />
           </View>
         ) : (
-          <View style={styles.btnNav}>
+          <View style={styles.btnAuth}>
             <Button
               title="Se connecter"
               onPress={SignIn}
@@ -125,19 +119,7 @@ const FirestoreAuth = ({navigation}) => {
             />
           </View>
         )}
-        {/* datastore button  */}
-        <View style={styles.btnNavData}>
-          <Button
-            title="SetUser"
-            onPress={SignIn}
-            onPress={() => navigation.navigate('DataUser')}
-          />
-          <Button
-            title="GetData"
-            onPress={SignIn}
-            onPress={() => navigation.navigate('OfficeData')}
-          />
-        </View>
+
         {/* <View style={styles.btnNav}>
           <Button title="Go back" onPress={() => navigation.goBack()} />
         </View> */}
@@ -150,8 +132,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#708090',
+  alignItems: 'center',
+    backgroundColor: '#48d1cc',
     // marginTop: 10,
   },
   inputContainer: {
@@ -161,7 +143,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderRadius: 10,
+    borderRadius: 4,
     marginTop: 5,
   },
   buttonContainer: {
@@ -195,6 +177,19 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
   },
+  AuthContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 15,
+    width: '95%',
+  },
+  btnAuth: {
+    paddingHorizontal: 1,
+    paddingVertical: 1,
+    borderRadius: 4,
+    marginTop: 5,
+    width: '45%',
+  },
 });
 
-export default FirestoreAuth;
+export default AuthScreen;

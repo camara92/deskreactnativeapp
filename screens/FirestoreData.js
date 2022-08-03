@@ -7,6 +7,7 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {db} from '../firebase/firebase-config';
 
@@ -15,7 +16,7 @@ import {ProviderId, ReactNativeAsyncStorage} from 'firebase/auth';
 // Notez bien : soit on utilise 'firebase/firestore/lite ou sans lite dans un seul projet : configurer au besoin fichir config de firebase
 
 // import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
-import {doc, setDoc} from 'firebase/firestore/lite';
+import {doc, setDoc, getDoc} from 'firebase/firestore/lite';
 import {parse} from 'react-native-svg';
 
 // On peut également les importer sur l'import du dessus ou inversement :
@@ -25,9 +26,22 @@ const FirestoreData = pop => {
   const [Until, setUntil] = useState('');
   const [isReserved, setisReserved] = useState(false);
   const nomradom = Math.random(1, 9);
+  const [userDoc, setUserDoc] = useState(null);
+  const [nom, setName] = useState('');
+  const [email, setEmail] = useState('');
 
+  const Create = async () => {
+    //const city = '';
+    // const [office_name, setOfficeName] = useState('');
+    setDoc(doc(db, 'Desk', 'Bureau 3'), {
+      Name: office_name,
+      IsReserved: isReserved,
+      ReservedBy: Person,
+      ReservedUntil: Until,
+    });
+  };
   // database on firestore :
-  const GetData = async () => {
+  const Read = async () => {
     const officesCollections = collection(db, 'Desk');
     const OfficeSnapshot = await getDocs(officesCollections);
     // const daouda = await (await getDocs(OfficeSnapshot)).doc('Bureau 1');
@@ -42,68 +56,83 @@ const FirestoreData = pop => {
     // console.log(OfficeSnapshot)
     //console.log(officesCollections);
   };
-  //firestore().collection('Users').onSnapshot(onResult, onError);
-  const SetData = async () => {
-    //const city = '';
-    // const [office_name, setOfficeName] = useState('');
-    setDoc(doc(db, 'Desk', 'Bureau 1'), {
-      Name: office_name,
-      IsReserved: isReserved,
-      ReservedBy: Person,
-      ReservedUntil: Until,
-    });
+  // lecture
+  const Reading = () => {
+    const myDoc = doc(db, 'Desk', 'Bureau 1');
+    getDoc(myDoc)
+      .then(snapshot => {
+        if (snapshot.exists) {
+          setUserDoc(snapshot.data());
+        } else {
+          alert('Aucun document ! ');
+        }
+      })
+      .catch(error => {
+        alert(error.message);
+      });
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.infoOffice}>
-        Office : bureau pour la réservation des salles{' '}
-      </Text>
-      <View style={styles.inputContainer}>
-        <View style={styles.TextInput}>
-          <Text></Text>
-          <Text style={styles.textLabel}>Nom de bureau </Text>
-          <TextInput
-            placeholder="Ajouter un nom pour votre collection "
-            value={office_name}
-            onChangeText={text => setOfficeName(text)}
-          />
-          <Text style={styles.textLabel}>Est-il réservée ? </Text>
-          <TextInput
-            placeholder="true or false"
-            value={isReserved}
-            onChangeText={text => setisReserved(text)}
-          />
-          <Text style={styles.textLabel}>Réservé par : </Text>
-          <TextInput
-            placeholder="Réserver par : Daouda "
-            value={Person}
-            onChangeText={text => setPerson(text)}
-          />
-          <Text style={styles.textLabel}>Délai </Text>
-          <TextInput
-            placeholder="Réservation : journée-soir-autre "
-            value={Until}
-            onChangeText={text => setUntil(text)}
-          />
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.infoOffice}>
+          Office : bureau pour la réservation des salles{' '}
+        </Text>
+        <View style={styles.inputContainer}>
+          <View style={styles.TextInput}>
+            <Text></Text>
+            <Text style={styles.textLabel}>Nom de bureau </Text>
+            <TextInput
+              placeholder="Ajouter un nom pour votre collection "
+              value={office_name}
+              onChangeText={text => setOfficeName(text)}
+            />
+            <Text style={styles.textLabel}>Est-il réservée ? </Text>
+            <TextInput
+              placeholder="true or false"
+              value={isReserved}
+              onChangeText={text => setisReserved(text)}
+            />
+            <Text style={styles.textLabel}>Réservé par : </Text>
+            <TextInput
+              placeholder="Réserver par : Daouda "
+              value={Person}
+              onChangeText={text => setPerson(text)}
+            />
+            <Text style={styles.textLabel}>Délai </Text>
+            <TextInput
+              placeholder="Réservation : journée-soir-autre "
+              value={Until}
+              onChangeText={text => setUntil(text)}
+            />
+          </View>
+          <View style={styles.btnData}>
+            <Button
+              style={styles.btn}
+              title="Create"
+              onPress={Create}
+              onChangeText={text => setOfficeName(text)}
+            />
+          </View>
+          <View style={styles.btnData}>
+            <Button style={styles.btn} title="Read" onPress={Read} />
+
+            <View style={styles.Read}>
+            <Text style={styles.TextInput}>Methode 2</Text>
+            <Button title="Lire une data " onPress={Reading} />
+              {userDoc != null && <Text> - Nom de bureau : {userDoc.Name} </Text>}
+              {userDoc != null && (
+                <Text> - Réservée ? : {userDoc.IsReserved} </Text>
+              )}
+              {userDoc != null && <Text> - Par : {userDoc.ReservedBy} </Text>}
+              {userDoc != null && (
+                <Text> - Durée : {userDoc.ReservedUntil} </Text>
+              )}
+            </View>
+          </View>
         </View>
-        <View style={styles.btnData}>
-          <Button
-            style={styles.btn}
-            title="SetData"
-            onPress={SetData}
-            onChangeText={text => setOfficeName(text)}
-          />
-        </View>
-        <View style={styles.btnData}>
-          <Button style={styles.btn} title="GetData" onPress={GetData} />
-          {/* <Text> {pop.OfficeList[1].Name} </Text> */}
-        </View>
-        {/* <View style={styles.btnNav}>
-          <Button title="Go back" onPress={() => navigation.goBack()} />
-        </View> */}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -161,6 +190,13 @@ const styles = StyleSheet.create({
     marginBottom: 11,
     fontWeight: 'bold',
     fontSize: 31,
+  },
+  Read: {
+    marginTop: 12,
+    backgroundColor: 'white',
+    paddingTop: 11,
+    marginBottom: 11,
+    
   },
 });
 

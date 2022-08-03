@@ -24,7 +24,5 @@ const styles = StyleSheet.create({
     title:{
 width:"70%"
     }, 
-    price:{
-color:globalStyles.dimGrey
-    }
+   
 })
