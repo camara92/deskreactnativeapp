@@ -34,7 +34,8 @@ function AppNav({navigation}) {
 
         screenOptions={({navigation}) => ({
           headerStyle: {
-            backgroundColor: globalStyles.green,
+            backgroundColor: "midnightblue",
+            
             // AlignItems: 'center',
           },
           headerTitleStyle: {fontWeight: 'bold'},
@@ -248,7 +249,7 @@ function AppNav({navigation}) {
           component={FirestoreData}
         />
         {/* screen of FirestoreAuth UserCollection Data  */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="DataUser"
           options={{
             tabBarLabel: 'Booking',
@@ -268,7 +269,7 @@ function AppNav({navigation}) {
             ),
           }}
           component={FirestoreCollAuth}
-        />
+        /> */}
       </tab.Navigator>
     </NavigationContainer>
   );
