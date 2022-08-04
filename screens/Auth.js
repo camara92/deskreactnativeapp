@@ -159,14 +159,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   TextWelcome: {
-    color: 'white',
+    color: 'red',
     marginBottom: 15,
-    fontSize: 25,
+    fontSize: 50,
     textShadowColor: 'bold',
-    textShadowOffset: {width: 5, height: 5},
+    textShadowOffset: {width: 3, height: 5},
     textShadowRadius: 25,
     textShadowColor: 'blue',
     textAlign: 'center',
+    fontWeight:"bold"
   },
   btnNavData: {
     backgroundColor: 'white',

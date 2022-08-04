@@ -33,7 +33,7 @@ const FirestoreData = pop => {
   const Create = async () => {
     //const city = '';
     // const [office_name, setOfficeName] = useState('');
-    setDoc(doc(db, 'Desk', 'Bureau 3'), {
+    setDoc(doc(db, 'Desk', 'Bureau'), {
       Name: office_name,
       IsReserved: isReserved,
       ReservedBy: Person,
@@ -58,7 +58,7 @@ const FirestoreData = pop => {
   };
   // lecture
   const Reading = () => {
-    const myDoc = doc(db, 'Desk', 'Bureau 1');
+    const myDoc = doc(db, 'Desk', 'Bureaux');
     getDoc(myDoc)
       .then(snapshot => {
         if (snapshot.exists) {
@@ -70,10 +70,26 @@ const FirestoreData = pop => {
       .catch(error => {
         alert(error.message);
       });
+      // myDoc.forEach((ell)=>{
+      //   console.log(ell)
+      // })
   };
+ const myArray = [10, 20, 30, 40, 50]
 
+  myArray.forEach((el)=>{
+      console.log(el)
+  })
   return (
     <ScrollView>
+      <View>
+      {/* <Text>
+        {myDoc}
+      </Text> */}
+        {/* <Text>
+          {'\n'+myArray +'\n'}
+
+        </Text> */}
+      </View>
       <View style={styles.container}>
         <Text style={styles.infoOffice}>
           Office : bureau pour la réservation des salles{' '}
