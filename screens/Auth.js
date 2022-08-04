@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   alignItems: 'center',
     backgroundColor: '#48d1cc',
+    //backgroundColor: 'lightblue',
     // marginTop: 10,
   },
   inputContainer: {

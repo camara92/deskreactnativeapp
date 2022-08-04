@@ -11,8 +11,12 @@ const Landing = ({navigation}) => {
     const dispach = useDispatch(); 
     const handleAddToCart =(course) =>{
       dispach(addToCart(course));
-      alert("cours ajouté au panier. Merci. ")
+
+      alert("Réservation ajoutée. Merci valider la réservation. ")
     }
+    // le but : à mon avis on doit créer une function abonnement pour ensuite vider le panier à un certains temps si la réservation n'est pas confirmée. 
+    // une sorte d'abonnement qui actualisera notre base de données
+    
     const existingCourses= useSelector(state=>state.courses.existingCourses); 
     // une fois selectionné les cours 
     const coursesToDisplay= existingCourses.filter( course=>course.selected === false);
