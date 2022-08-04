@@ -32,12 +32,12 @@ const CoursesItem = props => {
             <Image
               
               style={{
-                width: 50,
-                height: 32,
+                width: 65,
+                height: 55,
                 resizeMode: 'contain',
                 borderRadius:25 }}
               source={{
-                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHDcJltpARMrSGkOQNC3mn0EjwAknJsCiHxXzWULBFEVvi7GCePf922OjtY9u9jPINix0&usqp=CAU',
+                uri: 'https://www.creativefabrica.com/wp-content/uploads/2019/02/Eye-Icon-by-arus-1-580x386.jpg',
               }}
             />
           </TouchableOpacity>
@@ -51,7 +51,7 @@ const CoursesItem = props => {
                 resizeMode: 'contain',
                 borderRadius:25 }}
               source={{
-                uri: 'https://www.crushpixel.com/big-static15/preview4/add-plus-icon-flat-style-1894167.jpg',
+                uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/OOjs_UI_icon_add.svg/1024px-OOjs_UI_icon_add.svg.png',
               }}
             />
           </TouchableOpacity>
