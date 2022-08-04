@@ -232,8 +232,7 @@ function AppNav({navigation}) {
           options={{
             tabBarLabel: 'Firestore',
             tabBarIcon: ({color}) => (
-              // <MaterialCommunityIcons name="home" color={color} size={35} />
-              // <Icon name="home" size={30} color="blue" />
+             
               <Image
                 style={{
                   width: 51,

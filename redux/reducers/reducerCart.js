@@ -36,7 +36,7 @@ const reducerCart = (state = initialState, action )=>{
             return {
                 ...state, 
                 cartCourses: newCartCoursesArray,
-                total: state.total - coursePrice
+                total: state.total 
             }
             // paiement 
             case ADD_PAYMENT: 

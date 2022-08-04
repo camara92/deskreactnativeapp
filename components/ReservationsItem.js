@@ -28,10 +28,32 @@ const CoursesItem = props => {
           <TouchableOpacity
           onPress={props.viewDetails}
           >
-            <Text style={styles.iconReplaceIcons}>Voir </Text>
+            {/* <Text style={styles.iconReplaceIcons}>Voir </Text> */}
+            <Image
+              
+              style={{
+                width: 50,
+                height: 32,
+                resizeMode: 'contain',
+                borderRadius:25 }}
+              source={{
+                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHDcJltpARMrSGkOQNC3mn0EjwAknJsCiHxXzWULBFEVvi7GCePf922OjtY9u9jPINix0&usqp=CAU',
+              }}
+            />
           </TouchableOpacity>
           <TouchableOpacity onPress={props.OnAddToCart}>
-            <Text style={styles.iconReplaceIcons}>Ajouter </Text>
+            {/* <Text style={styles.iconReplaceIcons}>Ajouter </Text> */}
+            <Image
+              
+              style={{
+                width: 50,
+                height: 55,
+                resizeMode: 'contain',
+                borderRadius:25 }}
+              source={{
+                uri: 'https://www.crushpixel.com/big-static15/preview4/add-plus-icon-flat-style-1894167.jpg',
+              }}
+            />
           </TouchableOpacity>
         </View>
       </View>

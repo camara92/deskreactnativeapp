@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View , Image} from 'react-native'
 import React from 'react'
 import globalStyles from '../styles/globalStyles';
 // si icon import des icons 
@@ -17,7 +17,18 @@ const CoursesInCart = (props) => {
       >
      
         <View style={styles.btnDeleteToCart}>
-                        <Text style={styles.btntextDeleteToCart}>supprimer </Text>
+        <Image
+              
+              style={{
+                width: 30,
+                height: 35,
+                resizeMode: 'contain',
+                borderRadius:25 }}
+              source={{
+                uri: 'https://icons.veryicon.com/png/o/business/simple-linear-icon-icon/delete-332.png',
+              }}
+            />
+                        {/* <Text style={styles.btntextDeleteToCart}>supprimer </Text> */}
         </View>
 
       </TouchableOpacity>

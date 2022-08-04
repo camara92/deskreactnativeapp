@@ -32,10 +32,10 @@ const Landing = ({navigation}) => {
               titre={item.title}
               imagee={item.image}
             
-              viewDetails={()=> navigation.navigate('Details', {
-                courseId: item.id,
-                title: item.title
-              })}
+              // viewDetails={()=> navigation.navigate('Details', {
+              //   courseId: item.id,
+              //   title: item.title
+              // })}
               OnAddToCart={()=>handleAddToCart(item)}
              
   
